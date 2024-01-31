@@ -48,7 +48,7 @@ struct WelcomePage {
   }
 
   exitApp(){
-    // 退出APP
+    // 退出APP：terminateSelf()
     this.context.terminateSelf()
   }
 
