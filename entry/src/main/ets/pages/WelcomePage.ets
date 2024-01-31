@@ -34,6 +34,7 @@ struct WelcomePage {
 
   jumpToIndex(){
     setTimeout(() => {
+      //替换掉当前页，不压榨
       router.replaceUrl({
         url: 'pages/Index'
       })
