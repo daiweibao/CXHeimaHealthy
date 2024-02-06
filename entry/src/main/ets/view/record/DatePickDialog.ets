@@ -24,7 +24,7 @@ export default struct DatePickDialog {
           .width(120)
           .backgroundColor($r('app.color.primary_color'))
           .onClick(() => {
-            // 1.保存日期到全局存储
+            // 1.保存日期到全局存储：getTime() 获取日期的毫秒
             AppStorage.SetOrCreate('selectedDate', this.selectedDate.getTime())
             // 2.关闭窗口
             this.controller.close()

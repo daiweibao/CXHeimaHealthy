@@ -8,7 +8,7 @@ import NutrientStats from './NutrientStats'
 
 @Component
 export default struct StatsCard {
-
+//读取刚才存储的日期：
   @StorageProp('selectedDate') selectedDate: number = DateUtil.beginTimeOfDay(new Date())
   @StorageProp('currentBreakpoint') currentBreakpoint: string = BreakpointConstants.BREAKPOINT_SM
 
