@@ -8,7 +8,9 @@ import RecordIndex from '../view/record/RecordIndex'
 @Component
 struct Index {
   @State currentIndex: number = 0
+  //初始化媒体查询类
   private breakpointSystem: BreakpointSystem = new BreakpointSystem()
+  //读取媒体查询数据
   @StorageProp('currentBreakpoint') currentBreakpoint: string = BreakpointConstants.BREAKPOINT_SM
 
   @State isPageShow: boolean = false
@@ -32,10 +34,12 @@ struct Index {
   }
 
   aboutToAppear(){
+    //监听媒体查询
     this.breakpointSystem.register()
   }
 
   aboutToDisappear(){
+    //注销媒体查询
     this.breakpointSystem.unregister()
   }
 

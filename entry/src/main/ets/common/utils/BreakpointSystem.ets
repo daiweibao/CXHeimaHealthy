@@ -1,4 +1,4 @@
-import mediaQuery from '@ohos.mediaquery'
+  import mediaQuery from '@ohos.mediaquery'
 import BreakpointConstants from '../constants/BreakpointConstants'
 
 export default class BreakpointSystem{
