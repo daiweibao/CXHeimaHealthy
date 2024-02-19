@@ -1,6 +1,5 @@
 class DateUtil{
 
-  //日期格式化，num传入日期毫秒值
   formatDate(num: number): string{
     let date = new Date(num)
     let year = date.getFullYear()
@@ -11,7 +10,6 @@ class DateUtil{
     return `${year}/${m}/${d}`
   }
 
-  //读取当天日期
   beginTimeOfDay(date: Date){
     let d = new Date(date.getFullYear(), date.getMonth(), date.getDate())
     return d.getTime()

@@ -2,15 +2,25 @@ import BreakpointType from '../../common/bean/BreanpointType'
 import BreakpointConstants from '../../common/constants/BreakpointConstants'
 import { CommonConstants } from '../../common/constants/CommonConstants'
 import DateUtil from '../../common/utils/DateUtil'
+import RecordService from '../../service/RecordService'
+import RecordVO from '../../viewmodel/RecordVO'
+import StatsInfo from '../../viewmodel/StatsInfo'
 import CalorieStats from './CalorieStats'
 import DatePickDialog from './DatePickDialog'
 import NutrientStats from './NutrientStats'
 
 @Component
 export default struct StatsCard {
-//读取刚才存储的日期：
+
   @StorageProp('selectedDate') selectedDate: number = DateUtil.beginTimeOfDay(new Date())
   @StorageProp('currentBreakpoint') currentBreakpoint: string = BreakpointConstants.BREAKPOINT_SM
+
+  @Consume @Watch('handleRecordsChange') records: RecordVO[]
+  @State info: StatsInfo = new StatsInfo()
+
+  handleRecordsChange(){
+    this.info = RecordService.calculateStatsInfo(this.records)
+  }
 
   controller: CustomDialogController = new CustomDialogController({
     builder: DatePickDialog({selectedDate: new Date(this.selectedDate)})
@@ -31,9 +41,9 @@ export default struct StatsCard {
       // 2.统计信息
       Swiper(){
         // 2.1.热量统计
-        CalorieStats()
+        CalorieStats({intake: this.info.intake, expend: this.info.expend})
         // 2.2.营养素统计
-        NutrientStats()
+        NutrientStats({carbon: this.info.carbon, protein: this.info.protein, fat: this.info.fat})
       }
       .width('100%')
       .backgroundColor(Color.White)
@@ -50,4 +60,3 @@ export default struct StatsCard {
     .borderRadius(CommonConstants.DEFAULT_18)
   }
 }
-
