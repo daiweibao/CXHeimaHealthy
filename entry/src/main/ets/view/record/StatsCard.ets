@@ -50,3 +50,4 @@ export default struct StatsCard {
     .borderRadius(CommonConstants.DEFAULT_18)
   }
 }
+
